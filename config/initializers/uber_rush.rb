@@ -20,7 +20,7 @@ module Uber
       }
     }
 
-  class UberRush
+  class RUSH
     include HTTParty
     attr_reader :base_path
 

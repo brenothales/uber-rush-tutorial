@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
   end
 
   def quote
-    ur = Uber::UberRush.new
+    ur = Uber::RUSH.new
 
     pickup_obj = Uber::PICKUP
 
@@ -44,7 +44,7 @@ class ProductsController < ApplicationController
         :card  => params[:stripeToken]
       )
 
-      ur = Uber::UberRush.new
+      ur = Uber::RUSH.new
       pickup_obj = Uber::PICKUP
 
       dropoff_obj = {
@@ -79,7 +79,7 @@ class ProductsController < ApplicationController
       @time = response["dropoff"]["eta"] + response["pickup"]["eta"]
 
       binding.pry
-      
+
       charge = Stripe::Charge.create(
         :customer    => customer.id,
         :amount      => @amount,
