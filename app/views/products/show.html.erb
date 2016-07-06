@@ -1,0 +1,56 @@
+<div class="flex two">
+  <div class="product-image">
+    <img src="<%= @product.picture %>" />
+  </div>
+  <div>
+    <h1><%= @product.title %></h1>
+    <p>
+      <%= @product.description %>
+    </p>
+
+    <h2><%= number_to_currency(@product.price) %></h2>
+    <hr />
+    <h3>Instant Shipping</h3>
+
+    <img src="https://www.pivofy.com/wp-content/uploads/2015/10/uber-rush-logo-300x54.png" />
+
+    <div id="shipping-quote">
+      <%= form_tag "/quote", method: 'post', remote: true do %>
+        <%= text_field_tag :address, nil, placeholder: "Street Address" %>
+        <%= text_field_tag :city, nil, placeholder: "City" %>
+        <%= text_field_tag :postal_code, nil, placeholder: "Postal Code" %>
+        <%= submit_tag "Get a Delivery Quote" %>
+      <% end %>
+    </div>
+    <br />
+
+    <div id="quote-info" class="hidden">
+      <h3>Quote Details</h3>
+      <p>Cost Estimate: <span id="shipping-cost"></span></p>
+      <p>Time Estimate: <span id="eta"></span></p>
+    </div>
+
+    <div id="checkout" class="hidden">
+      <h3>Order Product</h3>
+      <%= form_tag "/order", method: 'post' do %>
+        <%= text_field_tag :first_name, nil, placeholder: "First Name" %>
+        <%= text_field_tag :last_name, nil, placeholder: "Last Name" %>
+        <%= text_field_tag :email, nil, placeholder: "Email" %>
+        <%= text_field_tag :number, nil, placeholder: "Cell Phone" %>
+        <%= text_field_tag :address, nil, placeholder: "Street Address" %>
+        <%= text_field_tag :city, nil, placeholder: "City" %>
+        <%= text_field_tag :postal_code, nil, placeholder: "Postal Code" %>
+
+        <%= hidden_field_tag :title , @product.title %>
+        <%= hidden_field_tag :price , @product.price %>
+
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-description="Shoes"
+            data-amount="">
+        </script>
+      <% end %>
+    </div>
+
+  </div>
+</div>

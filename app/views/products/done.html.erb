@@ -1,0 +1,7 @@
+<h1>Thank you for the order!</h1>
+
+<p>Total Cost with Shipping: <strong><%= number_to_currency(params[:amount].to_i / 100.00) %></strong></p>
+
+<p>Your Shoes will Arrive: <strong><%= params[:time] %> minutes</strong></p>
+
+<p>A copy of the invoice has been sent to your email, and you will recieve SMS updates from the UberRUSH courier.</p>

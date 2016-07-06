@@ -1,0 +1,10 @@
+$('#shipping-cost').html("<%= number_to_currency(@quote["fee"]) %>");
+$('#eta').html("<%=  @quote["pickup_eta"] + @quote["dropoff_eta"] %> minutes");
+
+$('#shipping-quote').hide();
+$('#quote-info').show();
+$('#checkout').show();
+
+$('input[name=address]').val('<%= @dropoff[:location][:address]  %>');
+$('input[name=city]').val('<%= @dropoff[:location][:city]  %>');
+$('input[name=postal_code]').val('<%= @dropoff[:location][:postal_code]  %>');
