@@ -1,4 +1,4 @@
-<div class="flex two">
+<div class="flex one two-1000">
   <div class="product-image">
     <img src="<%= @product.picture %>" />
   </div>
@@ -11,8 +11,10 @@
     <h2><%= number_to_currency(@product.price) %></h2>
     <hr />
     <h3>Instant Shipping</h3>
-
-    <img src="https://www.pivofy.com/wp-content/uploads/2015/10/uber-rush-logo-300x54.png" />
+    <img src="https://s31.postimg.org/cjyo11eqj/uber_rush.png" class="logo"/>
+    <p>
+        <small>UberRUSH is an on-demand delivery network powered by Uber. Once your order is picked up, you’ll receive a text message with a link to track your delivery in real time on the map. So you always know exactly when it will arrive. </small>
+    </p>
 
     <div id="shipping-quote">
       <%= form_tag "/quote", method: 'post', remote: true do %>
